@@ -25,25 +25,31 @@
  */
 package es.csic.iiia.planes.tutorial;
 
-import es.csic.iiia.planes.DefaultPlane;
-import es.csic.iiia.planes.Location;
+import es.csic.iiia.planes.Task;
+import es.csic.iiia.planes.messaging.AbstractMessage;
 
 /**
- * Implementation of a plane that will coordinate using auctions.
- * 
- * This implementation is solely for learning purposes.
- * 
+ * Message sent by a plane to reallocate one of its tasks to another plane.
  * @author Marc Pujol <mpujol@iiia.csic.es>
  */
-public class TutorialPlane extends DefaultPlane {
+public class ReallocateMessage extends AbstractMessage {
+
+    private Task task;
 
     /**
-     * Build a new tutorial plane.
-     * 
-     * @param location initial location of this plane.
+     * Build a new message to reallocate the given task to the destination plane.
+     * @param t task being reallocated
      */
-    public TutorialPlane(Location location) {
-        super(location);
+    public ReallocateMessage(Task t) {
+        this.task = t;
     }
-    
+
+    /**
+     * Get the task being reallocated.
+     * @return task being reallocated.
+     */
+    public Task getTask() {
+        return task;
+    }
+
 }
